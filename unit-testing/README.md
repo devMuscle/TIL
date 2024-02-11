@@ -15,7 +15,7 @@
 - 커버리지 지표는 괜찮은 부정 지표이지만 좋은 긍정 지표는 아니다
   - 코드 커버리지가 낮으면 테스트가 충분치 않다는 좋은 증거지만
     코드 커버리지가 높다고 양질의 테스트코드라는 것은 보장하지 않는다
-  - [예시](https://github.com/devMuscle/TIL/blob/main/unit-testing/unit-testing/src/test/java/me/devMuscle/unittesting/IsStringLongTest.java)
+  - [예시](https://github.com/devMuscle/TIL/blob/main/unit-testing/unit-testing/src/test/java/me/devMuscle/unittesting/TestCoverageTest.java)
     - isStringLong1 의 경우 코드 커버리지가 80% 이지만
       isStringLong2 의 경우 코드 커버리지가 100% 이다
     - 테스트 스위트를 개선하지 않았지만 커버리지 숫자가 변화 하였다
