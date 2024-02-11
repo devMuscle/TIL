@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 public class TestCoverageTest {
 
+    public static boolean wasLastStringLong;
+
     @Test
     public void isStringLong1_테스트_커버리지_80() {
         boolean result = isStringLong1("abc");
@@ -29,7 +31,15 @@ public class TestCoverageTest {
         boolean result2 = isStringLong("abcdef");
     }
 
-    public static boolean wasLastStringLong;
+    @Test
+    public void 외부_라이브러리의_코드_경로를_고려할_수_없음() {
+        int result = parse("5");
+        Assertions.assertEquals(5, result);
+    }
+
+    public static int parse(String input) {
+        return Integer.parseInt(input);
+    }
 
     public static boolean isStringLong(String input) {
         boolean result = input.length() > 5;
