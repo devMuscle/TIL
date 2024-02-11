@@ -3,7 +3,7 @@ package me.devMuscle.unittesting;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class IsStringLongTest {
+public class TestCoverageTest {
 
     @Test
     public void isStringLong1Test() {
@@ -18,9 +18,8 @@ public class IsStringLongTest {
     }
 
     public static boolean isStringLong1(String input) {
-        if(input.length() > 5)  {
+        if(input.length() > 5)
             return true;
-        }
         return false;
     }
 
