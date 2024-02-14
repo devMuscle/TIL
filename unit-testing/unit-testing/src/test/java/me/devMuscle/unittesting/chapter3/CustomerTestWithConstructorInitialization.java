@@ -3,17 +3,16 @@ package me.devMuscle.unittesting.chapter3;
 import me.devMuscle.unittesting.chapter2.Customer;
 import me.devMuscle.unittesting.chapter2.Product;
 import me.devMuscle.unittesting.chapter2.Store;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CustomerTest {
+public class CustomerTestWithConstructorInitialization {
 
     private Store store;
     private Customer sut;
 
-    public CustomerTest() {
+    public CustomerTestWithConstructorInitialization() {
         store = new Store();
         store.addInventory(Product.SHAMPOO, 10);
         sut = new Customer();
