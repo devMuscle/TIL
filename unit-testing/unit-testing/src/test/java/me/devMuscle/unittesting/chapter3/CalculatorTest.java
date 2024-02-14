@@ -11,10 +11,12 @@ class CalculatorTest {
         // 준비
         double first = 10;
         double second = 20;
-        Calculator calculator = new Calculator();
+        //Calculator calculator = new Calculator();
+        Calculator sut = new Calculator();
 
         // 실행
-        double result = calculator.sum(first, second);
+        //double result = calculator.sum(first, second);
+        double result = sut.sum(first, second);
 
         // 검증
         assertEquals(30, result);
