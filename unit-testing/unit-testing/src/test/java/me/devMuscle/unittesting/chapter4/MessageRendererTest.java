@@ -20,4 +20,14 @@ class MessageRendererTest {
         assertInstanceOf(BodyRenderer.class, renderers.get(1));
         assertInstanceOf(FooterRenderer.class, renderers.get(2));
     }
+
+    @Test
+    public void rendering_a_message() {
+        MessageRenderer sut = new MessageRenderer();
+        Message message = new Message("h", "b", "f");
+
+        String html = sut.render(message);
+
+        assertEquals("<div>h<div><div>b<div><div>f<div>", html);
+    }
 }
