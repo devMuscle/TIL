@@ -1,7 +1,10 @@
 package me.devMuscle.unittesting.chapter5;
 
+import me.devMuscle.unittesting.chapter3.Database;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class ControllerTest {
@@ -14,5 +17,16 @@ class ControllerTest {
         sut.greetUser("user@email.com");
 
         verify(emailGateWay, times(1)).sendGreetingEmail("user@email.com");
+    }
+
+    @Test
+    public void creating_a_report() {
+        Database stub = mock(Database.class);
+        when(stub.getNumberOfUsers()).thenReturn(10);
+        Controller sut = new Controller(stub);
+
+        Report report = sut.createReport();
+
+        assertEquals(10, report.numberOfUsers);
     }
 }
