@@ -2,11 +2,15 @@ package me.devMuscle.unittesting.chapter5;
 
 public class User {
 
-    public int userId;
-    public String name;
+    private int userId;
+    private String name;
 
     public User(int userId) {
         this.userId = userId;
+    }
+
+    public void setName(String value) {
+        this.name = normalizeName(value);
     }
 
     public String normalizeName(String name) {

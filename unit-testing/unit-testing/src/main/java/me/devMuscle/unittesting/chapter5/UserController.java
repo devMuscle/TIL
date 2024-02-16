@@ -6,10 +6,7 @@ public class UserController {
 
     public void renameUser(int userId, String newName) {
         User user = getUserFromDatabase(userId);
-
-        String normalizedName = user.normalizeName(newName);
-        user.name = normalizedName;
-
+        user.setName(newName);
         saveUserToDatabase(user);
     }
 
