@@ -1,6 +1,6 @@
 package me.devMuscle.unittesting.chapter5;
 
-import me.devMuscle.unittesting.chapter3.Database;
+import me.devMuscle.unittesting.chapter5.Database;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

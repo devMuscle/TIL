@@ -1,6 +1,6 @@
 package me.devMuscle.unittesting.chapter5;
 
-import me.devMuscle.unittesting.chapter3.Database;
+import me.devMuscle.unittesting.chapter5.Database;
 
 public class Controller {
 
