@@ -1,10 +1,9 @@
 package me.devMuscle.unittesting.chapter5;
 
 import me.devMuscle.unittesting.chapter3.Database;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class ControllerTest {
@@ -28,5 +27,17 @@ class ControllerTest {
         Report report = sut.createReport();
 
         assertEquals(10, report.numberOfUsers);
+    }
+
+    @Test
+    public void creating_a_report_easy_broken() {
+        Database stub = mock(Database.class);
+        when(stub.getNumberOfUsers()).thenReturn(10);
+        Controller sut = new Controller(stub);
+
+        Report report = sut.createReport();
+
+        assertEquals(10, report.numberOfUsers);
+        verify(stub, times(1)).getNumberOfUsers();
     }
 }
