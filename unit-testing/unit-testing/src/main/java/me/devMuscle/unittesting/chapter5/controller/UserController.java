@@ -1,4 +1,7 @@
-package me.devMuscle.unittesting.chapter5;
+package me.devMuscle.unittesting.chapter5.controller;
+
+import me.devMuscle.unittesting.chapter5.Database;
+import me.devMuscle.unittesting.chapter5.domain.User;
 
 public class UserController {
 

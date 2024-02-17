@@ -1,5 +1,7 @@
 package me.devMuscle.unittesting.chapter5;
 
+import me.devMuscle.unittesting.chapter5.domain.User;
+
 public class Database {
 
     public int getNumberOfUsers() {

@@ -1,4 +1,4 @@
-package me.devMuscle.unittesting.chapter5;
+package me.devMuscle.unittesting.chapter5.domain;
 
 public class User {
 

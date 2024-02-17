@@ -8,4 +8,8 @@ public class EmailGateWay {
     public void sendGreetingEmail(String email) {
         log.info(email);
     }
+
+    public void sendReceipt(String email, String productName, int quantity) {
+
+    }
 }
