@@ -1,8 +1,10 @@
 package me.devMuscle.unittesting.chapter6;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,5 +37,15 @@ class ArticleTest {
 
         // 헬퍼 메서드로 글의 상태를 검증
         sut.shouldContainNumberOfComments(1).withComment(text, author, now);
+    }
+
+    @Test
+    public void adding_a_comment_to_an_article_verify_with_assertj() {
+        Article sut = new Article();
+        Comment comment = new Comment("Comment text", "John Doe", LocalDate.of(2024,2,18));
+
+        sut.addComment(comment.text, comment.author, comment.dateCreated);
+
+        Assertions.assertThat(sut.getComments()).contains(comment);
     }
 }
