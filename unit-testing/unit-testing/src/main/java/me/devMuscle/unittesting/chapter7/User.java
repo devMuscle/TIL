@@ -9,22 +9,19 @@ public class User {
     public String email;
     public UserType type;
 
-    public int changeEmail(String newEmail, String companyDomainName, int numberOfEmployees) {
+    public void changeEmail(String newEmail, Company company) {
         if(email == newEmail) {
-            return numberOfEmployees;
+            return;
         }
 
-        email = newEmail;
-        String emailDomain = newEmail.split("@")[1];
-        boolean isEmailCorporate = (emailDomain.equals(companyDomainName));
-        UserType newType = isEmailCorporate ? UserType.EMPLOYEE : UserType.CUSTOMER;
+        UserType newType = company.isEmailCorporate(newEmail) ? UserType.EMPLOYEE : UserType.CUSTOMER;
 
         if(type != newType) {
             int delta = newType == UserType.EMPLOYEE ? 1 : -1;
-            type = newType;
-            return numberOfEmployees + delta;
+            company.changeNumberOfEmployees(delta);
         }
 
-        return numberOfEmployees;
+        email = newEmail;
+        type = newType;
     }
 }

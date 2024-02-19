@@ -10,6 +10,6 @@ public class Database {
         return new Object[]{"company.com", 10};
     }
 
-    public void saveCompany(int numberOfEmployees) {}
+    public void saveCompany(Company company) {}
     public void saveUser(User user) {}
 }
