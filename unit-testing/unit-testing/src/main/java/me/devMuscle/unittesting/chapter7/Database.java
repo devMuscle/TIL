@@ -2,16 +2,6 @@ package me.devMuscle.unittesting.chapter7;
 
 public class Database {
 
-    private Database() {}
-
-    private static class DatabaseInstanceHandler {
-        private static final Database INSTANCE = new Database();
-    }
-
-    public static Database getInstance() {
-        return DatabaseInstanceHandler.INSTANCE;
-    }
-
     public Object[] getUserById(int userId) {
         return new Object[]{userId, "user@email.com", UserType.EMPLOYEE};
     }
