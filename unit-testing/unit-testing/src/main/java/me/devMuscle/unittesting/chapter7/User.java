@@ -1,17 +1,20 @@
 package me.devMuscle.unittesting.chapter7;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public class User {
 
-    public int userId;
-    public String email;
-    public UserType type;
+    private int userId;
+    private String email;
+    private UserType type;
+    private boolean isEmailConfirmed;
 
-    public void changeEmail(String newEmail, Company company) {
-        if(email == newEmail) {
-            return;
+    public String changeEmail(String newEmail, Company company) {
+        if(isEmailConfirmed) {
+            return "Can't change a confirmed email";
         }
 
         UserType newType = company.isEmailCorporate(newEmail) ? UserType.EMPLOYEE : UserType.CUSTOMER;
@@ -23,5 +26,7 @@ public class User {
 
         email = newEmail;
         type = newType;
+
+        return null;
     }
 }
