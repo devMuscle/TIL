@@ -10,7 +10,8 @@ public class UserFactory {
         int id = (int)data[0];
         String email = (String)data[1];
         UserType type = (UserType)data[2];
+        boolean isEmailConfirmed = (boolean)data[3];
 
-        return new User(id, email, type);
+        return new User(id, email, type, isEmailConfirmed);
     }
 }
