@@ -19,7 +19,10 @@ public class UserController {
         // 결정에 따라 실행하기
         database.saveCompany(company);
         database.saveUser(user);
-        messageBus.sendEmailChangedMessage(userId, newEmail);
+        // 도메인 이벤트 처리
+        for(EmailChangedEvent emailChangedEvent : user.getEmailChangedEvents()) {
+            messageBus.sendEmailChangedMessage(emailChangedEvent.getUserId(), emailChangedEvent.getNewEmail());
+        }
 
         return "OK";
     }

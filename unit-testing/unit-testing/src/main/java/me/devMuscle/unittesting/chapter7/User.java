@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 public class User {
@@ -12,6 +15,7 @@ public class User {
     private String email;
     private UserType type;
     private boolean isEmailConfirmed;
+    private final List<EmailChangedEvent> emailChangedEvents = new ArrayList<>();
 
     public String canChangeEmail() {
         if(isEmailConfirmed) {
@@ -38,5 +42,7 @@ public class User {
 
         email = newEmail;
         type = newType;
+        // 새 이벤트는 이메일 변경을 나타냄
+        emailChangedEvents.add(new EmailChangedEvent(userId, newEmail));
     }
 }
