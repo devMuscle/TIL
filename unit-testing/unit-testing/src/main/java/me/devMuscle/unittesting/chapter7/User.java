@@ -2,6 +2,7 @@ package me.devMuscle.unittesting.chapter7;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.util.Assert;
 
 @Getter
 @AllArgsConstructor
@@ -12,9 +13,20 @@ public class User {
     private UserType type;
     private boolean isEmailConfirmed;
 
-    public String changeEmail(String newEmail, Company company) {
+    public String canChangeEmail() {
         if(isEmailConfirmed) {
             return "Can't change a confirmed email";
+        }
+
+        return null;
+    }
+
+    public void changeEmail(String newEmail, Company company) {
+        String message = canChangeEmail();
+        Assert.isNull(message, message);
+
+        if(email.equals(newEmail)) {
+            return;
         }
 
         UserType newType = company.isEmailCorporate(newEmail) ? UserType.EMPLOYEE : UserType.CUSTOMER;
@@ -26,7 +38,5 @@ public class User {
 
         email = newEmail;
         type = newType;
-
-        return null;
     }
 }

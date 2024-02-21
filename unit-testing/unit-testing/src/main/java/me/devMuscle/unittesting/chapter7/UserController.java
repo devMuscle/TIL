@@ -11,11 +11,6 @@ public class UserController {
         Object[] userData = database.getUserById(userId);
         User user = UserFactory.create(userData);
 
-        // User에서 이곳으로 옮긴 의사 결정
-        if(user.isEmailConfirmed()) {
-            return "Can't change a confirmed email";
-        }
-
         Object[] companyData = database.getCompany();
         Company company = CompanyFactory.create(companyData);
 
