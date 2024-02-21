@@ -25,12 +25,15 @@ public class User {
         return null;
     }
 
-    public void changeEmail(String newEmail, Company company) {
-        String message = canChangeEmail();
-        Assert.isNull(message, message);
+    public String changeEmail(String newEmail, Company company) {
+        String error = canChangeEmail();
+
+        if(error != null) {
+            return error;
+        }
 
         if(email.equals(newEmail)) {
-            return;
+            return null;
         }
 
         UserType newType = company.isEmailCorporate(newEmail) ? UserType.EMPLOYEE : UserType.CUSTOMER;
@@ -44,5 +47,7 @@ public class User {
         type = newType;
         // 새 이벤트는 이메일 변경을 나타냄
         emailChangedEvents.add(new EmailChangedEvent(userId, newEmail));
+
+        return null;
     }
 }

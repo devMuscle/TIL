@@ -14,7 +14,10 @@ public class UserController {
         Object[] companyData = database.getCompany();
         Company company = CompanyFactory.create(companyData);
 
-        user.changeEmail(newEmail, company);
+        String error = user.changeEmail(newEmail, company);
+        if(error != null) {
+            return error;
+        }
 
         // 결정에 따라 실행하기
         database.saveCompany(company);
@@ -23,7 +26,6 @@ public class UserController {
         for(EmailChangedEvent emailChangedEvent : user.getEmailChangedEvents()) {
             messageBus.sendEmailChangedMessage(emailChangedEvent.getUserId(), emailChangedEvent.getNewEmail());
         }
-
         return "OK";
     }
 }
