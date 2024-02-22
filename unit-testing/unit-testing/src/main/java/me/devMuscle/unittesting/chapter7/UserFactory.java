@@ -14,4 +14,10 @@ public class UserFactory {
 
         return new User(id, email, type, isEmailConfirmed);
     }
+
+    public static User createUser(String email, UserType userType, Database db) {
+        User user = new User(db.getLastUserIndex()+1, email, userType, false);
+        db.saveUser(user);
+        return user;
+    }
 }

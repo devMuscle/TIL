@@ -2,7 +2,6 @@ package me.devMuscle.unittesting.chapter7;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;

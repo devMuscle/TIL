@@ -12,4 +12,10 @@ public class CompanyFactory {
 
         return new Company(domainName, numberOfEmployees);
     }
+
+    public static Company createCompany(String domainName, int numberOfEmployees, Database db) {
+        Company company = new Company(domainName, numberOfEmployees);
+        db.saveCompany(company);
+        return company;
+    }
 }
