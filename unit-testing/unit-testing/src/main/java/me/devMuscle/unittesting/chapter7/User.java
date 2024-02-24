@@ -17,7 +17,7 @@ public class User {
     private UserType type;
     private boolean isEmailConfirmed;
     private final List<EmailChangedEvent> emailChangedEvents = new ArrayList<>();
-    private DomainLogger domainLogger;
+    private final List<DomainEvent> domainEvents = new ArrayList<>();
 
     public String canChangeEmail() {
         if(isEmailConfirmed) {
@@ -46,8 +46,8 @@ public class User {
         if(type != newType) {
             int delta = newType == UserType.EMPLOYEE ? 1 : -1;
             company.changeNumberOfEmployees(delta);
-            //지원 로그
-            domainLogger.userTypeHasChanged(userId, type, newType);
+            // DomainLogger 대신 도메인 이벤트 사용
+            domainEvents.add(new UserTypeChangedEvent(userId, type, newType));
         }
 
         email = newEmail;
