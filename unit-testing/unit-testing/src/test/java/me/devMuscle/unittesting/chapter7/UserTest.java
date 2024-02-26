@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -44,7 +43,7 @@ public class UserTest {
         Assertions.assertThat(company.getNumberOfEmployees()).isEqualTo(0);
         Assertions.assertThat(sut.getEmail()).isEqualTo("new@gmail.com");
         Assertions.assertThat(sut.getType()).isEqualTo(UserType.CUSTOMER);
-        Assertions.assertThat(sut.getEmailChangedEvents()).contains(new EmailChangedEvent(1, "new@gmail.com"));
+        Assertions.assertThat(sut.getDomainEvents()).contains(new EmailChangedEvent(1, "new@gmail.com"));
     }
 
     @Test
@@ -57,7 +56,8 @@ public class UserTest {
 
         //메시지 버스 목 설정
         MessageBus messageBusMock = mock(MessageBus.class);
-        UserController sut = new UserController(db, messageBusMock);
+        DomainLogger loggerMock = mock(DomainLogger.class);
+        UserController sut = new UserController(db, messageBusMock, loggerMock);
 
         //실행
         String result = sut.changeEmail(user.getUserId(),"new@gmail.com");
@@ -78,5 +78,6 @@ public class UserTest {
 
         //목 상호 작용 확인
         verify(messageBusMock, times(1)).sendEmailChangedMessage(user.getUserId(), "new@gmail.com");
+        verify(loggerMock, times(1)).userTypeHasChanged(user.getUserId(), UserType.EMPLOYEE, UserType.CUSTOMER);
     }
 }
