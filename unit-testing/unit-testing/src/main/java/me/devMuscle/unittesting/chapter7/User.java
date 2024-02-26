@@ -16,7 +16,6 @@ public class User {
     private String email;
     private UserType type;
     private boolean isEmailConfirmed;
-    private final List<EmailChangedEvent> emailChangedEvents = new ArrayList<>();
     private final List<DomainEvent> domainEvents = new ArrayList<>();
 
     public String canChangeEmail() {
@@ -53,7 +52,7 @@ public class User {
         email = newEmail;
         type = newType;
         // 새 이벤트는 이메일 변경을 나타냄
-        emailChangedEvents.add(new EmailChangedEvent(userId, newEmail));
+        domainEvents.add(new EmailChangedEvent(userId, newEmail));
         // 진단 로그
         log.info("Email is changed for user {}", userId);
 

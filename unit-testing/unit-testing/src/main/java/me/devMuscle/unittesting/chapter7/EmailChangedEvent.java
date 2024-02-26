@@ -7,7 +7,7 @@ import lombok.Getter;
 @EqualsAndHashCode
 @AllArgsConstructor
 @Getter
-public class EmailChangedEvent {
+public class EmailChangedEvent implements DomainEvent{
 
     private int userId;
     private String newEmail;
