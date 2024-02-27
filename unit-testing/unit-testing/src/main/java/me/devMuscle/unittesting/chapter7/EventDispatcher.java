@@ -8,7 +8,7 @@ import java.util.List;
 public class EventDispatcher {
 
     private final MessageBus messageBus;
-    private final DomainLogger domainLogger;
+    private final IDomainLogger domainLogger;
 
     public void dispatch(List<DomainEvent> domainEvents) {
         for(DomainEvent domainEvent : domainEvents) {

@@ -9,7 +9,7 @@ public class UserController {
     private final Database database;
     private final EventDispatcher eventDispatcher;
 
-    public UserController (Database database, MessageBus messageBus, DomainLogger domainLogger) {
+    public UserController (Database database, MessageBus messageBus, IDomainLogger domainLogger) {
         this.database = database;
         this.eventDispatcher = new EventDispatcher(messageBus, domainLogger);
     }

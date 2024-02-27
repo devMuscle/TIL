@@ -57,7 +57,7 @@ public class UserTest {
         //메시지 버스 목 설정
         IBus busMock = mock(IBus.class);
         MessageBus messageBus = new MessageBus(busMock);
-        DomainLogger loggerMock = mock(DomainLogger.class);
+        IDomainLogger loggerMock = mock(IDomainLogger.class);
         UserController sut = new UserController(db, messageBus, loggerMock);
 
         //실행
