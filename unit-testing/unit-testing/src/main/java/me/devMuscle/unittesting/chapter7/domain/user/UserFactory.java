@@ -1,5 +1,6 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.chapter7.domain.user;
 
+import me.devMuscle.unittesting.chapter7.Database;
 import org.springframework.util.Assert;
 
 public class UserFactory {

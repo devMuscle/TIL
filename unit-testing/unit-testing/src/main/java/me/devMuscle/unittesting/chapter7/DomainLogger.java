@@ -1,6 +1,7 @@
 package me.devMuscle.unittesting.chapter7;
 
 import lombok.extern.slf4j.Slf4j;
+import me.devMuscle.unittesting.chapter7.domain.user.UserType;
 
 @Slf4j
 public class DomainLogger implements IDomainLogger{

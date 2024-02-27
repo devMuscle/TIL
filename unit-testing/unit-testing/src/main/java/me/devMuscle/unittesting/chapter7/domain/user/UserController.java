@@ -1,6 +1,11 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.chapter7.domain.user;
 
 import lombok.RequiredArgsConstructor;
+import me.devMuscle.unittesting.chapter7.*;
+import me.devMuscle.unittesting.chapter7.bus.MessageBus;
+import me.devMuscle.unittesting.chapter7.domain.company.Company;
+import me.devMuscle.unittesting.chapter7.domain.company.CompanyFactory;
+import me.devMuscle.unittesting.chapter7.domain.event.EventDispatcher;
 
 @RequiredArgsConstructor
 public class UserController {

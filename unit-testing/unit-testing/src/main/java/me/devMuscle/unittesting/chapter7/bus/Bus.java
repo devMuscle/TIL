@@ -1,4 +1,4 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.chapter7.bus;
 
 public class Bus implements IBus{
 

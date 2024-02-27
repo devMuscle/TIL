@@ -1,4 +1,4 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.chapter7.bus;
 
 import java.util.ArrayList;
 import java.util.List;

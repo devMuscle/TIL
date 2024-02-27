@@ -1,5 +1,7 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.chapter7.domain.company;
 
+import me.devMuscle.unittesting.chapter7.Database;
+import me.devMuscle.unittesting.chapter7.domain.company.Company;
 import org.springframework.util.Assert;
 
 public class CompanyFactory {

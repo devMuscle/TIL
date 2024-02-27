@@ -1,8 +1,12 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.chapter7.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import me.devMuscle.unittesting.chapter7.domain.event.UserTypeChangedEvent;
+import me.devMuscle.unittesting.chapter7.domain.company.Company;
+import me.devMuscle.unittesting.chapter7.domain.event.DomainEvent;
+import me.devMuscle.unittesting.chapter7.domain.event.EmailChangedEvent;
 
 import java.util.ArrayList;
 import java.util.List;

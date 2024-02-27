@@ -1,4 +1,4 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.chapter7.domain.company;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

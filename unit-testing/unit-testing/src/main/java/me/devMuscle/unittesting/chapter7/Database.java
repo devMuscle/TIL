@@ -1,6 +1,8 @@
 package me.devMuscle.unittesting.chapter7;
 
 import lombok.NoArgsConstructor;
+import me.devMuscle.unittesting.chapter7.domain.company.Company;
+import me.devMuscle.unittesting.chapter7.domain.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
