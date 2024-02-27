@@ -55,8 +55,8 @@ public class UserTest {
         CompanyFactory.createCompany("mycorp.com", 1, db);
 
         //메시지 버스 목 설정
-        IBus busMock = mock(IBus.class);
-        MessageBus messageBus = new MessageBus(busMock);
+        BusSpy busSpy = new BusSpy();
+        MessageBus messageBus = new MessageBus(busSpy);
         IDomainLogger loggerMock = mock(IDomainLogger.class);
         UserController sut = new UserController(db, messageBus, loggerMock);
 
@@ -78,8 +78,7 @@ public class UserTest {
         assertEquals(0, companyFromDb.getNumberOfEmployees());
 
         //목 상호 작용 확인
-        verify(busMock, times(1)).send(String.format(
-                "Type: USER EMAIL CHANGED; " + "Id: %d; " + "NewEmail: new@gmail.com", user.getUserId()));
+        busSpy.shouldSendNumberOfMessages(1).withEmailChangedMessage(user.getUserId(), "new@gmail.com");
         verify(loggerMock, times(1)).userTypeHasChanged(user.getUserId(), UserType.EMPLOYEE, UserType.CUSTOMER);
     }
 }
