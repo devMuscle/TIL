@@ -1,8 +1,7 @@
 package me.devMuscle.unittesting.crm.domain.company;
 
 import lombok.RequiredArgsConstructor;
-import me.devMuscle.unittesting.crm.Transaction;
-import me.devMuscle.unittesting.crm.domain.user.User;
+import me.devMuscle.unittesting.crm.CrmContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +9,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompanyRepository {
 
-    private final Transaction transaction;
+    private final CrmContext crmContext;
     private final List<Company> companyStorage = new ArrayList<>();
 
-    public Object[] getCompany() {
-        Company company = companyStorage.get(0);
-        return new Object[]{company.getDomainName(), company.getNumberOfEmployees()};
+    public Company getCompany() {
+       return companyStorage.get(0);
     }
 
     public void saveCompany(Company company) {
