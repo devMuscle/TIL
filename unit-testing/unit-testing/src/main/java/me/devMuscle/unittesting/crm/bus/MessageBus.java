@@ -1,7 +1,7 @@
-package me.devMuscle.unittesting.chapter7.bus;
+package me.devMuscle.unittesting.crm.bus;
 
 import lombok.RequiredArgsConstructor;
-import me.devMuscle.unittesting.chapter7.domain.event.DomainEvent;
+import me.devMuscle.unittesting.crm.domain.event.DomainEvent;
 
 @RequiredArgsConstructor
 public class MessageBus implements DomainEvent {

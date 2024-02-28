@@ -1,8 +1,8 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.crm;
 
 import lombok.NoArgsConstructor;
-import me.devMuscle.unittesting.chapter7.domain.company.Company;
-import me.devMuscle.unittesting.chapter7.domain.user.User;
+import me.devMuscle.unittesting.crm.domain.company.Company;
+import me.devMuscle.unittesting.crm.domain.user.User;
 
 import java.util.ArrayList;
 import java.util.List;

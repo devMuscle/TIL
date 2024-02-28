@@ -1,6 +1,6 @@
-package me.devMuscle.unittesting.chapter7;
+package me.devMuscle.unittesting.crm;
 
-import me.devMuscle.unittesting.chapter7.domain.user.UserType;
+import me.devMuscle.unittesting.crm.domain.user.UserType;
 
 public interface IDomainLogger {
 

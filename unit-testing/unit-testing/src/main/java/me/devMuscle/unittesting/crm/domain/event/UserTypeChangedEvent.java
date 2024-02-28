@@ -1,8 +1,8 @@
-package me.devMuscle.unittesting.chapter7.domain.event;
+package me.devMuscle.unittesting.crm.domain.event;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import me.devMuscle.unittesting.chapter7.domain.user.UserType;
+import me.devMuscle.unittesting.crm.domain.user.UserType;
 
 @Getter
 @AllArgsConstructor

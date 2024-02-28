@@ -1,4 +1,4 @@
-package me.devMuscle.unittesting.chapter7.domain.event;
+package me.devMuscle.unittesting.crm.domain.event;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

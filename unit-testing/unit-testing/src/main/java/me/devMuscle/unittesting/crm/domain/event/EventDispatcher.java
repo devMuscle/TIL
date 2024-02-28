@@ -1,11 +1,8 @@
-package me.devMuscle.unittesting.chapter7.domain.event;
+package me.devMuscle.unittesting.crm.domain.event;
 
 import lombok.RequiredArgsConstructor;
-import me.devMuscle.unittesting.chapter7.IDomainLogger;
-import me.devMuscle.unittesting.chapter7.bus.MessageBus;
-import me.devMuscle.unittesting.chapter7.domain.event.DomainEvent;
-import me.devMuscle.unittesting.chapter7.domain.event.EmailChangedEvent;
-import me.devMuscle.unittesting.chapter7.domain.event.UserTypeChangedEvent;
+import me.devMuscle.unittesting.crm.IDomainLogger;
+import me.devMuscle.unittesting.crm.bus.MessageBus;
 
 import java.util.List;
 
