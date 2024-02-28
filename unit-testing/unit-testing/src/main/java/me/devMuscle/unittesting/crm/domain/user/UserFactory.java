@@ -1,6 +1,5 @@
 package me.devMuscle.unittesting.crm.domain.user;
 
-import me.devMuscle.unittesting.crm.Database;
 import org.springframework.util.Assert;
 
 public class UserFactory {
