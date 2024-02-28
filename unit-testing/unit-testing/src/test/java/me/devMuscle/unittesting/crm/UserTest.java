@@ -3,11 +3,11 @@ package me.devMuscle.unittesting.crm;
 import me.devMuscle.unittesting.crm.bus.BusSpy;
 import me.devMuscle.unittesting.crm.bus.MessageBus;
 import me.devMuscle.unittesting.crm.domain.company.Company;
-import me.devMuscle.unittesting.crm.domain.company.CompanyFactory;
+import me.devMuscle.unittesting.crm.domain.company.CompanyRepository;
 import me.devMuscle.unittesting.crm.domain.event.EmailChangedEvent;
 import me.devMuscle.unittesting.crm.domain.user.User;
 import me.devMuscle.unittesting.crm.domain.user.UserController;
-import me.devMuscle.unittesting.crm.domain.user.UserFactory;
+import me.devMuscle.unittesting.crm.domain.user.UserRepository;
 import me.devMuscle.unittesting.crm.domain.user.UserType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -57,17 +57,23 @@ public class UserTest {
 
     @Test
     public void changing_email_from_corporate_to_non_corporate_integration_test() {
+        // 컨텍스트 생성
+        CrmContext context = new CrmContext();
         //준비
-        Database db = new Database();
+        UserRepository userRepository = new UserRepository(context);
+        CompanyRepository companyRepository = new CompanyRepository(context);
         //데이터베이스에 사용자와 회사 생성
-        User user = UserFactory.createUser("user@mycorp.com", UserType.EMPLOYEE, db);
-        CompanyFactory.createCompany("mycorp.com", 1, db);
+        User user = new User(0, "user@mycorp.com", UserType.EMPLOYEE, false);
+        userRepository.saveUser(user);
+        Company company = new Company("mycorp.com", 1);
+        companyRepository.saveCompany(company);
+        context.saveChanges();
 
         //메시지 버스 목 설정
         BusSpy busSpy = new BusSpy();
         MessageBus messageBus = new MessageBus(busSpy);
         IDomainLogger loggerMock = mock(IDomainLogger.class);
-        UserController sut = new UserController(db, messageBus, loggerMock);
+        UserController sut = new UserController(context, userRepository, companyRepository, messageBus, loggerMock);
 
         //실행
         String result = sut.changeEmail(user.getUserId(),"new@gmail.com");
@@ -76,14 +82,12 @@ public class UserTest {
         assertEquals("OK", result);
 
         //사용자 상태 검증
-        Object[] userData = db.getUserById(user.getUserId());
-        User userFromDb = UserFactory.create(userData);
+        User userFromDb = userRepository.getUserById(user.getUserId());
         assertEquals("new@gmail.com", userFromDb.getEmail());
         assertEquals(UserType.CUSTOMER, userFromDb.getType());
 
         //회사 상태 검증
-        Object[] companyData = db.getCompany();
-        Company companyFromDb = CompanyFactory.create(companyData);
+        Company companyFromDb = companyRepository.getCompany();
         assertEquals(0, companyFromDb.getNumberOfEmployees());
 
         //목 상호 작용 확인
