@@ -13,9 +13,8 @@ class Solution {
         return true;
     }
 
-    private Set<Integer> getPrimes(int acc, List<Integer> numbers) {
-        Set<Integer> primes = new HashSet<>();
-
+    private void getPrimes(int acc, List<Integer> numbers,
+                           Set<Integer> primes) {
         if(isPrime(acc)) primes.add(acc);
 
         for(int i=0; i<numbers.size(); i++) {
@@ -23,19 +22,20 @@ class Solution {
             List<Integer> nextNumbers = new ArrayList<>(numbers);
             nextNumbers.remove(i);
 
-            primes.addAll(getPrimes(nextAcc, nextNumbers));
+            getPrimes(nextAcc, nextNumbers, primes);
         }
-
-        return primes;
     }
 
     public int solution(String nums) {
+        Set<Integer> primes = new HashSet<>();
 
         List<Integer> numbers = nums.chars()
                 .map(c -> c - '0')
                 .boxed()
                 .collect(Collectors.toList());
 
-        return getPrimes(0, numbers).size();
+        getPrimes(0, numbers, primes);
+
+        return primes.size();
     }
 }
