@@ -13,28 +13,24 @@ class Solution {
         return true;
     }
 
-    private void getPrimes(int acc, List<Integer> numbers,
+    private void getPrimes(int acc, int[] numbers, boolean[] isUsed,
                            Set<Integer> primes) {
         if(isPrime(acc)) primes.add(acc);
 
-        for(int i=0; i<numbers.size(); i++) {
-            int nextAcc = acc * 10 + numbers.get(i);
-            List<Integer> nextNumbers = new ArrayList<>(numbers);
-            nextNumbers.remove(i);
+        for(int i=0; i<numbers.length; i++) {
+            if(isUsed[i]) continue;
 
-            getPrimes(nextAcc, nextNumbers, primes);
+            int nextAcc = acc * 10 + numbers[i];
+            isUsed[i] = true;
+            getPrimes(nextAcc, numbers, isUsed, primes);
+            isUsed[i] = false;
         }
     }
 
     public int solution(String nums) {
         Set<Integer> primes = new HashSet<>();
-
-        List<Integer> numbers = nums.chars()
-                .map(c -> c - '0')
-                .boxed()
-                .collect(Collectors.toList());
-
-        getPrimes(0, numbers, primes);
+        int[] numbers = nums.chars().map(c -> c - '0').toArray();
+        getPrimes(0, numbers, new boolean[numbers.length], primes);
 
         return primes.size();
     }
