@@ -30,18 +30,14 @@ class Solution {
         for(int i = 0; i < cars.length; i++) {
             Car car = cars[i];
 
-            while(!stack.isEmpty() && stack.peek() < car.start) {
+            if(!stack.isEmpty() && stack.peek() < car.start) {
                 stack.pop();
-                count++;
             }
 
             if(stack.isEmpty()) {
                 stack.push(car.end);
+                count++;
             }
-        }
-
-        if(!stack.isEmpty()) {
-            count++;
         }
 
         return count;
