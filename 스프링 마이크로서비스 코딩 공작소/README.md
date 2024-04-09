@@ -1715,7 +1715,7 @@ PCI (Payment Card Industry) 법규준수처럼 산업 표준의 인증 요구 �
 
   서비스가 자신의 상태 정보를 서비스 디스커버리 에이전트에 어떻게 전달하는가?
 
-![서비스 디스커버리 아키텍처](../images/README/서비스 디스커버리 아키텍처.png)
+![서비스 디스커버리 아키텍처](https://github.com/devMuscle/TIL/blob/main/images/README/%EC%84%9C%EB%B9%84%EC%8A%A4%20%EB%94%94%EC%8A%A4%EC%BB%A4%EB%B2%84%EB%A6%AC%20%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98.png)
 
 서비스 인스턴스가 시작하면 서비스 디스커버리 인스턴스가 접근할 수 있는
 자신의 물리적 위치와 경로, 포트를 등록한다.
